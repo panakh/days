@@ -39,10 +39,7 @@ class Days
 
     public function getUTCOffset()
     {
-        $dateTime = new DateTime($this->date, new DateTimeZone($this->timezone));
-        $inSeconds =  $dateTime->getOffset();
-
-        return intval(round($inSeconds/60));
+        return new Offset($this->date, $this->timezone);
     }
 
     public function getMonth(): string
