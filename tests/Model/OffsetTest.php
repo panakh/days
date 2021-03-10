@@ -17,12 +17,30 @@ class OffsetTest extends TestCase
         $this->assertEquals($expectedOffset, $offset->get());
     }
 
+    /**
+     * @dataProvider formattedProvider
+     */
+    public function testFormats($date, $timezone, $formatted)
+    {
+        $offset = new Offset($date, $timezone);
+        $this->assertEquals($formatted, (string) $offset);
+    }
+
     public function dateProvider()
     {
         return [
             ['2019-07-10', 'Europe/London', 60],
             ['2016-11-28', 'Asia/Tokyo', 540],
             ['1853-01-30', 'America/Lower_Princes', -276],
+        ];
+    }
+
+    public function formattedProvider()
+    {
+        return [
+            ['2019-07-10', 'Europe/London', '+60'],
+            ['2016-11-28', 'Asia/Tokyo', '+540'],
+            ['1853-01-30', 'America/Lower_Princes', '-276'],
         ];
     }
 }

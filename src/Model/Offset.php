@@ -19,8 +19,13 @@ class Offset
         $this->inSeconds = intval(round($inSeconds/60));
     }
 
-    public function get()
+    public function get(): int
     {
         return $this->inSeconds;
+    }
+
+    public function __toString()
+    {
+        return sprintf('%+d', $this->inSeconds);
     }
 }
