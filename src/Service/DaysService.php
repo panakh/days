@@ -28,7 +28,12 @@ class DaysService
         $date = new DateTime($date);
         $time = mktime(0, 0, 0, 2, 1, $date->format('Y'));
         $february =  new DateTime('@'.$time);
-        
+
         return intval($february->format('t'));
+    }
+
+    public function getDaysInMonth($date): int
+    {
+        return (new DateTime($date))->format('t');
     }
 }

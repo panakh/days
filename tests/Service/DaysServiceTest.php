@@ -41,6 +41,14 @@ class DaysServiceTest extends TestCase
         $this->assertEquals($days, $this->service->getFebruaryDays($date));
     }
 
+    /**
+     * @dataProvider daysInMonthProvider
+     */
+    public function testGetsDaysInMonth($date, $days)
+    {
+        $this->assertEquals($days, $this->service->getDaysInMonth($date));
+    }
+
     public function dateProvider()
     {
         return [
@@ -65,6 +73,15 @@ class DaysServiceTest extends TestCase
             ['2019-07-10', 28],
             ['2016-11-28', 29],
             ['1853-01-30', 28],
+        ];
+    }
+
+    public function daysInMonthProvider()
+    {
+        return [
+            ['2019-07-10', 31],
+            ['2016-11-28', 30],
+            ['1853-01-30', 31],
         ];
     }
 }
