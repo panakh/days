@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Days;
+use App\Model\Days;
 use App\Form\DaysType;
 use App\Repository\DaysRepository;
 use App\Service\DaysService;
@@ -41,12 +41,8 @@ class DaysController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $daysService = new DaysService();
-
             return $this->render('days/show.html.twig', [
-                'timezone' => $day->getTimezone(),
-                'month' => $daysService->getMonth($day->getDate()),
-                'offset' => $daysService->getUTCOffset($day->getDate(), $day->getTimezone()),
+                'days' => $day,
             ]);
         }
 

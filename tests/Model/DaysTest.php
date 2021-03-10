@@ -1,17 +1,19 @@
 <?php
 
-namespace App\Tests\Service;
+namespace App\Tests\Model;
 
+use App\Model\Days;
 use App\Service\DaysService;
 use PHPUnit\Framework\TestCase;
 
-class DaysServiceTest extends TestCase
+class DaysTest extends TestCase
 {
-    private $service;
+    private $days;
 
     public function setUp(): void
     {
-        $this->service = new DaysService();
+        $this->days = (new Days());
+
     }
 
     /**
@@ -19,8 +21,8 @@ class DaysServiceTest extends TestCase
      */
     public function testGetsCorrectUTCOffsets($date, $timezone, $expectedOffset): void
     {
-
-        $offset = $this->service->getUTCOffset($date, $timezone);
+        $this->days->setDate($date)->setTimezone($timezone);
+        $offset = $this->days->getUTCOffset();
         $this->assertEquals($expectedOffset, $offset);
     }
 
@@ -29,8 +31,8 @@ class DaysServiceTest extends TestCase
      */
     public function testComputesMonth($date, $month)
     {
-
-        $this->assertEquals($month, $this->service->getMonth($date));
+        $this->days->setDate($date);
+        $this->assertEquals($month, $this->days->getMonth($date));
     }
 
     /**
@@ -38,7 +40,8 @@ class DaysServiceTest extends TestCase
      */
     public function testGetsFebruaryDays($date, $days)
     {
-        $this->assertEquals($days, $this->service->getFebruaryDays($date));
+        $this->days->setDate($date);
+        $this->assertEquals($days, $this->days->getFebruaryDays($date));
     }
 
     /**
@@ -46,7 +49,8 @@ class DaysServiceTest extends TestCase
      */
     public function testGetsDaysInMonth($date, $days)
     {
-        $this->assertEquals($days, $this->service->getDaysInMonth($date));
+        $this->days->setDate($date);
+        $this->assertEquals($days, $this->days->getDaysInMonth());
     }
 
     public function dateProvider()

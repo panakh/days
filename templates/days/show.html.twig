@@ -3,33 +3,9 @@
 {% block title %}Days{% endblock %}
 
 {% block body %}
-{#    <h1>Days</h1>#}
 
-{#    <table class="table">#}
-{#        <tbody>#}
-{#            <tr>#}
-{#                <th>Id</th>#}
-{#                <td>{{ day.id }}</td>#}
-{#            </tr>#}
-{#            <tr>#}
-{#                <th>Date</th>#}
-{#                <td>{{ day.date }}</td>#}
-{#            </tr>#}
-{#            <tr>#}
-{#                <th>Timezone</th>#}
-{#                <td>{{ day.timezone }}</td>#}
-{#            </tr>#}
-{#        </tbody>#}
-{#    </table>#}
+    The timezone {{ days.timezone}} has {{ days.UTCOffset}} minutes offset to UTC.<br />
+    February in this year has {{ days.februaryDays}} days.<br />
+    Specified month ({{ days.month }}) has {{ days.daysInMonth}} days.
 
-
-    The timezone {{ timezone}} has {{ offset}} minutes offset to UTC.<br />
-    February in this year has {{ februaryDays}} days.<br />
-    Specified month ({{ month }}) has {{ monthDays}} days.
-
-{#    <a href="{{ path('days_index') }}">back to list</a>#}
-
-{#    <a href="{{ path('days_edit', {'id': day.id}) }}">edit</a>#}
-
-{#    {{ include('days/_delete_form.html.twig') }}#}
 {% endblock %}
