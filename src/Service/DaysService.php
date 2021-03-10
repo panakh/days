@@ -22,4 +22,13 @@ class DaysService
     {
         return (new DateTime($date))->format('F');
     }
+
+    public function getFebruaryDays($date): int
+    {
+        $date = new DateTime($date);
+        $time = mktime(0, 0, 0, 2, 1, $date->format('Y'));
+        $february =  new DateTime('@'.$time);
+        
+        return intval($february->format('t'));
+    }
 }
