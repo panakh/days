@@ -5,9 +5,11 @@ namespace App\Controller;
 use App\Entity\Days;
 use App\Form\DaysType;
 use App\Repository\DaysRepository;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Intl\Timezones;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -40,6 +42,9 @@ class DaysController extends AbstractController
 
 //            var_dump($day);die;
 //calculate days here
+
+
+
 
             return $this->render('days/show.html.twig', [
                 'day' => $day,
