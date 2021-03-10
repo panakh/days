@@ -13,7 +13,7 @@ class DaysServiceTest extends TestCase
         $timezone = 'Europe/London';
 
         $service = new DaysService();
-        $offset = $service->getUTCOffset();
+        $offset = $service->getUTCOffset($date, $timezone);
         $this->assertEquals('60', $offset);
     }
 }

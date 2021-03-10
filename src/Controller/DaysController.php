@@ -43,7 +43,9 @@ class DaysController extends AbstractController
 //            var_dump($day);die;
 //calculate days here
 
-
+            $first = new \DateTimeZone('Africa/Bangui');
+            $second = new \DateTimeZone('UTC');
+            var_dump($first->getOffset(new DateTime('now', $second)));die;
 
 
             return $this->render('days/show.html.twig', [

@@ -5,22 +5,17 @@ namespace App\Service;
 
 
 use DateTime;
+use DateTimeZone;
 
 class DaysService
 {
 
-    /**
-     * DaysService constructor.
-     */
-    public function __construct()
+    public function getUTCOffset($date, $timezone)
     {
-    }
 
-    public function getUTCOffset()
-    {
-        $first = new \DateTimeZone('Africa/Bangui');
+        $first = new \DateTimeZone($timezone);
         $second = new \DateTimeZone('UTC');
-        $inSeconds =  $first->getOffset(new DateTime('now', $second));
+        $inSeconds =  $first->getOffset(new DateTime($date, $second));
 
         return $inSeconds/60;
     }
