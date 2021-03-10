@@ -9,13 +9,15 @@ class DaysInMonthTest extends TestCase
 {
     /**
      * @dataProvider februaryDaysProvider
+     * @param $date
+     * @param $days
      */
-    public function testGetsFebruaryDays($date, $days)
+    public function testGetsFebruaryDays($date, $days): void
     {
         $this->assertEquals($days, DaysInMonth::inFebruary($date)->get());
     }
 
-    public function februaryDaysProvider()
+    public function februaryDaysProvider(): array
     {
         return [
             ['2019-07-10', 28],
@@ -26,8 +28,10 @@ class DaysInMonthTest extends TestCase
 
     /**
      * @dataProvider daysInMonthProvider
+     * @param $date
+     * @param $days
      */
-    public function testGetsDaysInMonth($date, $days)
+    public function testGetsDaysInMonth($date, $days): void
     {
         $this->assertEquals($days, DaysInMonth::specified($date)->get());
     }

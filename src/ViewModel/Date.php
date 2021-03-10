@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Model;
+namespace App\ViewModel;
 
-
+use App\Model\DaysInMonth;
+use App\Model\Offset;
 use DateTime;
 
-class Days
+class Date
 {
-
     private $date;
 
     private $timezone;

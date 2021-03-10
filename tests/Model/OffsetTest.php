@@ -10,6 +10,10 @@ class OffsetTest extends TestCase
 
     /**
      * @dataProvider dateProvider
+     * @param $date
+     * @param $timezone
+     * @param $expectedOffset
+     * @return void
      */
     public function testGetsCorrectUTCOffsets($date, $timezone, $expectedOffset): void
     {
@@ -19,14 +23,17 @@ class OffsetTest extends TestCase
 
     /**
      * @dataProvider formattedProvider
+     * @param $date
+     * @param $timezone
+     * @param $formatted
      */
-    public function testFormats($date, $timezone, $formatted)
+    public function testFormats($date, $timezone, $formatted): void
     {
         $offset = new Offset($date, $timezone);
         $this->assertEquals($formatted, (string) $offset);
     }
 
-    public function dateProvider()
+    public function dateProvider(): array
     {
         return [
             ['2019-07-10', 'Europe/London', 60],
@@ -35,7 +42,7 @@ class OffsetTest extends TestCase
         ];
     }
 
-    public function formattedProvider()
+    public function formattedProvider(): array
     {
         return [
             ['2019-07-10', 'Europe/London', '+60'],

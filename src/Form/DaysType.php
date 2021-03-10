@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Model\Days;
+use App\ViewModel\Date;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -20,7 +20,7 @@ class DaysType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Days::class,
+            'data_class' => Date::class,
         ]);
     }
 }

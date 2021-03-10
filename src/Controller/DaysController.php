@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Model\Days;
+use App\ViewModel\Date;
 use App\Form\DaysType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,7 +21,7 @@ class DaysController extends AbstractController
      */
     public function calculate(Request $request): Response
     {
-        $day = new Days();
+        $day = new Date();
         $form = $this->createForm(DaysType::class, $day);
         $form->handleRequest($request);
 
