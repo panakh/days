@@ -12,11 +12,9 @@ class DaysService
 
     public function getUTCOffset($date, $timezone)
     {
+        $first = new DateTime($date, new DateTimeZone($timezone));
+        $inSeconds =  $first->getOffset();
 
-        $first = new \DateTimeZone($timezone);
-        $second = new \DateTimeZone('UTC');
-        $inSeconds =  $first->getOffset(new DateTime($date, $second));
-
-        return $inSeconds/60;
+        return intval(round($inSeconds/60));
     }
 }

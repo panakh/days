@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Days;
 use App\Form\DaysType;
 use App\Repository\DaysRepository;
+use App\Service\DaysService;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -40,19 +41,12 @@ class DaysController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-//            var_dump($day);die;
-//calculate days here
-
-            $first = new \DateTimeZone('Africa/Bangui');
-            $second = new \DateTimeZone('UTC');
-            var_dump($first->getOffset(new DateTime('now', $second)));die;
-
+            $daysService = new DaysService();
 
             return $this->render('days/show.html.twig', [
-                'day' => $day,
-                'form' => $form->createView(),
+                'timezone' => $day->getTimezone(),
+                'offset' => $daysService->getUTCOffset($day->getDate(), $day->getTimezone()),
             ]);
-//            return $this->redirectToRoute('days_show');
         }
 
         return $this->render('days/new.html.twig', [
