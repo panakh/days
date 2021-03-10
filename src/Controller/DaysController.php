@@ -45,6 +45,7 @@ class DaysController extends AbstractController
 
             return $this->render('days/show.html.twig', [
                 'timezone' => $day->getTimezone(),
+                'month' => $daysService->getMonth($day->getDate()),
                 'offset' => $daysService->getUTCOffset($day->getDate(), $day->getTimezone()),
             ]);
         }

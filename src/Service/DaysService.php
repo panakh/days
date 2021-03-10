@@ -17,4 +17,9 @@ class DaysService
 
         return intval(round($inSeconds/60));
     }
+
+    public function getMonth($date): string
+    {
+        return (new DateTime($date))->format('F');
+    }
 }
