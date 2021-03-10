@@ -2,7 +2,7 @@
 
 namespace App\Tests\Model;
 
-use App\Model\DaysInMonth;
+use App\Model\Days;
 use PHPUnit\Framework\TestCase;
 
 class DaysInMonthTest extends TestCase
@@ -14,7 +14,7 @@ class DaysInMonthTest extends TestCase
      */
     public function testGetsFebruaryDays($date, $days): void
     {
-        $this->assertEquals($days, DaysInMonth::inFebruary($date)->get());
+        $this->assertEquals($days, Days::inFebruary($date)->get());
     }
 
     public function februaryDaysProvider(): array
@@ -33,7 +33,7 @@ class DaysInMonthTest extends TestCase
      */
     public function testGetsDaysInMonth($date, $days): void
     {
-        $this->assertEquals($days, DaysInMonth::specified($date)->get());
+        $this->assertEquals($days, Days::inMonthOf($date)->get());
     }
 
     public function daysInMonthProvider()
