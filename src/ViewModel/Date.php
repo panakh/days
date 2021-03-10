@@ -2,7 +2,7 @@
 
 namespace App\ViewModel;
 
-use App\Model\DaysInMonth;
+use App\Model\Days;
 use App\Model\Offset;
 use DateTime;
 
@@ -46,13 +46,13 @@ class Date
         return (new DateTime($this->date))->format('F');
     }
 
-    public function getFebruaryDays(): DaysInMonth
+    public function getFebruaryDays(): Days
     {
-        return DaysInMonth::inFebruary($this->date);
+        return Days::inFebruary($this->date);
     }
 
-    public function getDaysInMonth(): DaysInMonth
+    public function getDaysInMonth(): Days
     {
-        return DaysInMonth::specified($this->date);
+        return Days::inMonthOf($this->date);
     }
 }

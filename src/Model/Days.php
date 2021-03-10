@@ -4,7 +4,7 @@ namespace App\Model;
 
 use DateTime;
 
-class DaysInMonth
+class Days
 {
     private $days;
 
@@ -20,7 +20,7 @@ class DaysInMonth
         return new static(new DateTime('@'.$time));
     }
 
-    public static function specified($date): self
+    public static function inMonthOf($date): self
     {
         return new static(new DateTime($date));
     }

@@ -5,7 +5,7 @@ namespace App\Tests\Model;
 use App\Model\Days;
 use PHPUnit\Framework\TestCase;
 
-class DaysInMonthTest extends TestCase
+class DaysTest extends TestCase
 {
     /**
      * @dataProvider februaryDaysProvider

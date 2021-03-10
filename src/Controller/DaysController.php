@@ -21,19 +21,18 @@ class DaysController extends AbstractController
      */
     public function calculate(Request $request): Response
     {
-        $day = new Date();
-        $form = $this->createForm(DaysType::class, $day);
+        $date = new Date();
+        $form = $this->createForm(DaysType::class, $date);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
             return $this->render('days/show.html.twig', [
-                'days' => $day,
+                'date' => $date,
             ]);
         }
 
         return $this->render('days/new.html.twig', [
-            'day' => $day,
             'form' => $form->createView(),
         ]);
     }
