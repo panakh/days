@@ -36,7 +36,7 @@ class Date
         return $this;
     }
 
-    public function getUTCOffset()
+    public function getUTCOffset(): Offset
     {
         return new Offset($this->date, $this->timezone);
     }

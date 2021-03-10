@@ -30,7 +30,7 @@ class Days
         return (string) $this->days;
     }
 
-    public function get()
+    public function get(): int
     {
         return $this->days;
     }
