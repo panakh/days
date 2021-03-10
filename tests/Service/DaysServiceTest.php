@@ -7,13 +7,20 @@ use PHPUnit\Framework\TestCase;
 
 class DaysServiceTest extends TestCase
 {
-    public function testGetsCorrectUTCOffsets(): void
+    /**
+     * @dataProvider dateProvider
+     */
+    public function testGetsCorrectUTCOffsets($date, $timezone): void
     {
-        $date = '2019-07-10';
-        $timezone = 'Europe/London';
-
         $service = new DaysService();
         $offset = $service->getUTCOffset($date, $timezone);
         $this->assertEquals('60', $offset);
+    }
+
+    public function dateProvider()
+    {
+        return [
+            ['2019-07-10', 'Europe/London'],
+        ];
     }
 }
