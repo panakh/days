@@ -4,7 +4,6 @@ namespace App\Model;
 
 
 use DateTime;
-use DateTimeZone;
 
 class Days
 {
@@ -47,17 +46,13 @@ class Days
         return (new DateTime($this->date))->format('F');
     }
 
-    public function getFebruaryDays(): int
+    public function getFebruaryDays(): DaysInMonth
     {
-        $date = new DateTime($this->date);
-        $time = mktime(0, 0, 0, 2, 1, $date->format('Y'));
-        $february =  new DateTime('@'.$time);
-
-        return intval($february->format('t'));
+        return DaysInMonth::inFebruary($this->date);
     }
 
-    public function getDaysInMonth(): int
+    public function getDaysInMonth(): DaysInMonth
     {
-        return (new DateTime($this->date))->format('t');
+        return DaysInMonth::specified($this->date);
     }
 }
