@@ -3,8 +3,8 @@
 namespace App\ViewModel;
 
 use App\Model\Days;
+use App\Model\Month;
 use App\Model\Offset;
-use DateTime;
 
 class Date
 {
@@ -41,9 +41,9 @@ class Date
         return new Offset($this->date, $this->timezone);
     }
 
-    public function getMonth(): string
+    public function getMonth(): Month
     {
-        return (new DateTime($this->date))->format('F');
+        return new Month($this->date);
     }
 
     public function getFebruaryDays(): Days
